@@ -3,13 +3,68 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rock,Paper,Scissors</title>
+    <script
+      src="https://kit.fontawesome.com/c7176532d3.js"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      html {
+        font-family: "Courier New";
+      }
+      .centered {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        /* bring your own prefixes */
+        transform: translate(-50%, -50%);
+      }
+      .container {
+        height: 100vh;
+        width: 100vw;
+        background-color: seagreen;
+        text-align: center;
+        padding: 12rem;
+      }
+      button {
+        font-family: "Courier New";
+        border-width: 5px;
+        border-color: coral;
+        background-color: coral;
+        color: seagreen;
+        font-size: xx-large;
+        border-radius: 5px;
+        padding: 1rem 2rem;
+        transition-property: transform;
+        transition-duration: 0.1s;
+      }
+      button:hover {
+        transform: translate(-50%, -50%) scale3d(1.2, 1.2, 1);
+        color: cornflowerblue;
+      }
+      h1 {
+        color: coral;
+      }
+      i {
+        font-size: xx-large;
+        color: coral;
+        margin: 2rem;
+      }
+    </style>
+    <title>Rock, Paper, Scissors</title>
   </head>
   <body>
-    <button>Play</button>
+    <div class="container centered">
+      <h1>Rock, Paper, Scissors</h1>
+      <br />
+      <i class="fas fa-hand-rock"></i> <i class="fas fa-hand-paper"></i>
+      <i class="fas fa-hand-scissors"></i>
+      <button onclick="game()" class="centered">Play</button>
+    </div>
+
     <script>
       const weapon = ["Rock", "Paper", "Scissors"];
-      game();
+      // var btn = document.getElementById("");
+      // btn.addEventListener(“click”, alertMe);
 
       function game() {
         let playerScore = 0;
@@ -27,15 +82,15 @@
             case "Tie":
               playerScore++;
               computerScore++;
-              console.log("It's a Tie this round.");
+              alert("It's a Tie this round.");
               break;
             case "Computer Wins":
               computerScore++;
-              console.log("Bad luck, the Computer takes this round.");
+              alert("Bad luck, the Computer takes this round.");
               break;
             case "Player Wins":
               playerScore++;
-              console.log("Well done, you won that round");
+              alert("Well done, you won that round");
               break;
           }
         }
