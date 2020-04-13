@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rock,Paper,Scissors</title>
+  </head>
+  <body>
+    <button>Play</button>
+    <script>
+      const weapon = ["Rock", "Paper", "Scissors"];
+      game();
+
+      function game() {
+        let playerScore = 0;
+        let computerScore = 0;
+        alert("Let's Play Rock, Paper, Scissors!");
+        for (let step = 0; step < 5; step++) {
+          // Runs 5 times, with values of step 0 through 4.
+          let playerSelection = playerPlay();
+
+          let computerSelection = computerPlay();
+
+          let result = playRound(playerSelection, computerSelection);
+
+          switch (result) {
+            case "Tie":
+              playerScore++;
+              computerScore++;
+              console.log("It's a Tie this round.");
+              break;
+            case "Computer Wins":
+              computerScore++;
+              console.log("Bad luck, the Computer takes this round.");
+              break;
+            case "Player Wins":
+              playerScore++;
+              console.log("Well done, you won that round");
+              break;
+          }
+        }
+        if (computerScore > playerScore) {
+          alert(
+            `Unlucky the computer beat you, ${computerScore} points to ${playerScore} points. Better luck next time.`
+          );
+        } else if (playerScore > computerScore) {
+          alert(
+            `Well done you won, ${playerScore} points to ${computerScore} points! `
+          );
+        } else {
+          alert("It's a Tie!");
+        }
+      }
+
+      function playRound(playerSelection, computerSelection) {
+        console.log(
+          `You chose ${playerSelection} and the computer chose ${computerSelection}`
+        );
+        if (playerSelection == computerSelection) {
+          return "Tie";
+        } else if (playerSelection == "Rock") {
+          if (computerSelection == "Paper") {
+            return "Computer Wins";
+          } else {
+            return "Player Wins";
+          }
+        } else if (playerSelection == "Paper") {
+          if (computerSelection == "Scissors") {
+            return "Computer Wins";
+          } else {
+            return "Player Wins";
+          }
+        } else if (playerSelection == "Scissors") {
+          if (computerSelection == "Rock") {
+            return "Computer Wins";
+          } else {
+            return "Player Wins";
+          }
+        }
+      }
+      function playerPlay() {
+        let inputStillNeeded = true;
+        while (inputStillNeeded) {
+          let playerSelection = prompt(
+            "Rock, Paper or Scissors? Choose your weapon!",
+            ""
+          );
+
+          playerSelection =
+            playerSelection.slice(0, 1).toUpperCase() +
+            playerSelection.slice(1).toLowerCase();
+          if (weapon.includes(playerSelection)) {
+            return playerSelection;
+            inputStillNeeded = false;
+          }
+          alert(
+            `We don't recognise "${playerSelection}" as an option in this game`
+          );
+        }
+      }
+      function computerPlay() {
+        return weapon[Math.floor(Math.random() * 3)];
+      }
+    </script>
+  </body>
+</html>
