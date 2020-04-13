@@ -70,9 +70,9 @@
 
         alert("Let's Play Rock, Paper, Scissors!");
 
-        for (let step = 0; step < 5; step++) {
+        for (let round = 0; round < 5; round++) {
           // Runs 5 times, with values of step 0 through 4.
-          let playerSelection = playerPlay();
+          let playerSelection = playerPlay(round);
 
           let computerSelection = computerPlay();
 
@@ -80,8 +80,6 @@
 
           switch (result) {
             case "Tie":
-              playerScore++;
-              computerScore++;
               alert("It's a Tie this round.");
               break;
             case "Computer Wins":
@@ -103,12 +101,12 @@
             `Well done you won, ${playerScore} points to ${computerScore} points! `
           );
         } else {
-          alert("It's a Tie!");
+          alert(`It's a Tie! You both scored ${playerScore} points.`);
         }
       }
 
       function playRound(playerSelection, computerSelection) {
-        console.log(
+        alert(
           `You chose ${playerSelection} and the computer chose ${computerSelection}`
         );
         if (playerSelection == computerSelection) {
@@ -133,11 +131,12 @@
           }
         }
       }
-      function playerPlay() {
+      function playerPlay(round) {
         let inputStillNeeded = true;
         while (inputStillNeeded) {
           let playerSelection = prompt(
-            "Rock, Paper or Scissors? Choose your weapon!",
+            `Round ${round} of 5:
+             Rock, Paper or Scissors? Choose your weapon!`,
             ""
           );
 
